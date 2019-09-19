@@ -3,3 +3,43 @@ title: "team"
 output: html_document
 ---
 
+
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+## 1)
+recent_rating = choco[choco$Review.Date>2011,] # creates a dataset named recent_rating that lists only the data that has a review date sooner/newer than 2011
+
+unique(recent_rating$Company.Location) # 55 countries are listed out but there are 61 levels
+
+head(recent_rating) # shows a preview of recent_rating
+
+cross_table = table(recent_rating$Review.Date,recent_rating$Company.Location) # creates a table that shows the number of reviews for each year since 2011 for each country.
+cross_table # displays the created table
+
+which(cross_table[1,]!=0 & cross_table[2,]!=0 & cross_table[3,]!=0 & cross_table[4,]!=0 & cross_table[5,]!=0) # displays the number of reviews for each bar where there was a review done in each year since 2011, categorized by country
+
+france_recent = subset(recent_rating,Company.Location =='France')
+uk_recent = subset(recent_rating,Company.Location =='U.K.')
+germany_recent = subset(recent_rating,Company.Location=='Germany')
+
+par(mfrow=c(2,2))
+color1 = ifelse(france_recent$Rating >median(france_recent$Rating), 'blue', 'green')
+plot(france_recent$Cocoa.Pct ~ france_recent$Review.Date,ylim=c(50,90),col=color1,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "France") 
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('blue','green'),pch=18) # 
+
+color2 = ifelse(uk_recent$Rating >median(uk_recent$Rating), 'purple', 'red')
+plot(uk_recent$Cocoa.Pct ~ uk_recent$Review.Date,ylim=c(50,90),col=color2,pch=18,cex=1.5, xlab="Review Date", ylab= "Cocoa Percentage", main= "UK")
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('purple','red'),pch=18) # 
+
+color3 = ifelse(germany_recent$Rating > median(germany_recent$Rating), 'orange', 'yellow')
+plot(germany_recent$Cocoa.Pct ~ germany_recent$Review.Date,ylim=c(50,90),col=color3,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "Germany") 
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yellow'),pch=18) # 
+
+## 2) One way the plot above could be improved is by listing the lines in the Legend horizontally instead of vertically, unless you make the chart very large, the lines w/in the Legend overlap making them unreadable
+
+## 3)
+
+## 4)
+
+## 5)What is the effect of having a company get its bean from the country it is based in? Does this exist in the dataset? Does this make a difference in rating?
+
+## 6)Bonus points
