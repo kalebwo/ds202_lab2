@@ -1,2 +1,18 @@
-Text
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+
+library(ggplot2)
+
+## 1:
+ggplot(choco,aes(Rating))+geom_bar()
+
+
+## 2:
+ggplot(choco,aes(Cocoa.Pct, color= Rating))+ geom_bar(aes(color=Rating)) 
+
+
+
+## 3:
+Location is a Factor.Storing 'Location' as a Factor is helpful in grouping the different bars made in the same country together to better interpret the data.
+class(choco$Company.Location)
+levels(choco$Company.Location)
 
