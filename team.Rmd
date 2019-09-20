@@ -28,15 +28,15 @@ legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('blue','green')
 
 color2 = ifelse(uk_recent$Rating >median(uk_recent$Rating), 'purple', 'red')
 plot(uk_recent$Cocoa.Pct ~ uk_recent$Review.Date,ylim=c(50,90),col=color2,pch=18,cex=1.5, xlab="Review Date", ylab= "Cocoa Percentage", main= "UK")
-legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('purple','red'),pch=18) # 
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('purple','red'),pch=18) # Creates a chart that compares Review ratings and date of all the reviews from the UK.
 
 color3 = ifelse(germany_recent$Rating > median(germany_recent$Rating), 'orange', 'yellow')
 plot(germany_recent$Cocoa.Pct ~ germany_recent$Review.Date,ylim=c(50,90),col=color3,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "Germany") 
-legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yellow'),pch=18) # 
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yellow'),pch=18) # Creates a chart that compares Review ratings and date of all the reviews from Germany.
 
 ## 2) One way the plot above could be improved is by listing the lines in the Legend horizontally instead of vertically, unless you make the chart very large, the lines w/in the Legend overlap making them unreadable
 
-## 3)
+## 3) 
 
 ## 4)
 
