@@ -19,12 +19,12 @@ which(cross_table[1,]!=0 & cross_table[2,]!=0 & cross_table[3,]!=0 & cross_table
 
 france_recent = subset(recent_rating,Company.Location =='France')
 uk_recent = subset(recent_rating,Company.Location =='U.K.')
-germany_recent = subset(recent_rating,Company.Location=='Germany')
+germany_recent = subset(recent_rating,Company.Location=='Germany') # creates subsets for easy access to groups of data with the Company Location in the three countries: France, U.K., and Germany
 
 par(mfrow=c(2,2))
 color1 = ifelse(france_recent$Rating >median(france_recent$Rating), 'blue', 'green')
 plot(france_recent$Cocoa.Pct ~ france_recent$Review.Date,ylim=c(50,90),col=color1,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "France") 
-legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('blue','green'),pch=18) # 
+legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('blue','green'),pch=18) # Creates a chart comparing the Review Date against the Cocoa Percentage of all of the reviews from France.
 
 color2 = ifelse(uk_recent$Rating >median(uk_recent$Rating), 'purple', 'red')
 plot(uk_recent$Cocoa.Pct ~ uk_recent$Review.Date,ylim=c(50,90),col=color2,pch=18,cex=1.5, xlab="Review Date", ylab= "Cocoa Percentage", main= "UK")
