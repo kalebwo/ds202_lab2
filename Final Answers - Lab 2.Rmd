@@ -1,0 +1,7 @@
+---
+title: "Final Answers"
+output: html_document
+---
+a. Kaleb Wohlgemuth, Caleb Purcell
+b. https://github.com/kalebwo/ds202_lab2
+c. 
