@@ -36,7 +36,7 @@ legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yello
 
 ## 2) One way the plot above could be improved is by listing the lines in the Legend horizontally instead of vertically, unless you make the chart very large, the lines w/in the Legend overlap making them unreadable
 
-## 3) 
+## 3) The number of ratings appears to increase over time for the UK, while the number of Ratings for France and Germany hold steady from 2012-2016.
 
 ## 4)
 
