@@ -1,0 +1,97 @@
+---
+title: "Lab 3 Report"
+output: html_document
+---
+
+## Background
+
+
+
+## The Data Cleaning Process
+
+
+
+The different types of missing values (IAP, DK, NA) were replace with 'NA'. This was done by the following code:
+
+'''{r}
+happy <- readRDS("C:/Users/wogie/OneDrive/DS202/HAPPY.rds")
+names(happy) = tolower(names(happy))
+
+happy$polviews[happy$polviews %in% "IAP"] <- "NA"
+happy$polviews[happy$polviews %in% "DK"] <- "NA"
+happy$health[happy$health %in% "IAP"] <- "NA"
+happy$health[happy$health %in% "DK"] <- "NA"
+happy$finrela[happy$finrela %in% "IAP"] <- "NA"
+happy$finrela[happy$finrela %in% "DK"] <- "NA"
+
+'''
+The following code is how I cast Variables into the correct type to make the data visualization process more straightforward.
+
+'''{r}
+happy$age[happy$age == '89 OR OLDER'] <- "89"
+happy$happy = as.character(happy$happy)
+happy$year = as.numeric(happy$year)
+happy$age = as.numeric(happy$age)
+happy$sex = as.character(happy$sex)
+happy$marital = as.character(happy$marital)
+happy$degree = as.character(happy$degree)
+happy$finrela = as.character(happy$finrela)
+happy$health = as.character(happy$health)
+happy$wtssall = as.numeric(happy$wtssall)
+happy$partyid = as.character(happy$partyid)
+happy$polviews = as.character(happy$polviews)
+'''
+
+I decided that ordering all of the Factors according to age would make sense because it is a relevant characteristic for all other Factors.
+
+'''{r}
+library(tidyverse)
+
+happyVSage = fct_reorder(happy$happy, happy$age, .fun=median, .desc = FALSE)
+sexVSage = fct_reorder(happy$sex, happy$age, .fun=median, .desc = FALSE)
+maritalVSage = fct_reorder(happy$marital, happy$age, .fun=median, .desc = FALSE)
+degreeVSage = fct_reorder(happy$degree, happy$age, .fun=median, .desc = FALSE)
+finrelaVSage = fct_reorder(happy$finrela, happy$age, .fun=median, .desc = FALSE)
+healthVSage = fct_reorder(happy$health, happy$age, .fun=median, .desc = FALSE)
+partyidVSage = fct_reorder(happy$partyid, happy$age, .fun=median, .desc = FALSE)
+polviewsVSage = fct_reorder(happy$polviews, happy$age, .fun=median, .desc = FALSE)
+'''
+
+
+## Data Exploration
+
+## 1)
+
+Two interesting variables in this set are Sex and Degree. The distributions of both are shown below in relation to another variable, Age. 
+
+'''{r}
+library(ggplot2)
+ggplot(happy, aes(year, fill = sex)) + geom_histogram(binwidth=2) + labs(title="Histogram of Age by Sex", x="Year", y="Count")
+'''
+
+
+'''{r}
+ggplot(happy, aes(degree, age)) + geom_boxplot() + labs(title = "Boxplot of Degree by Age")
+'''
+
+
+## 2)
+
+
+'''{r}
+ggplot(happy, aes(health, fill=happy)) + geom_bar(color="red", position="fill") + coord_flip() + labs(title = "Barchart of Health as it relates to Happiness", x="Health", y="Percentage")
+'''
+
+
+'''{r}
+ggplot(happy, aes(age, color=happy)) + geom_freqpoly(binwidth=1) + labs(title = "Comparison of Happiness and Age", x="Age", y="Count")
+'''
+
+
+'''{r}
+ggplot(happy, aes(marital, fill=happy)) + geom_bar(position="fill") + labs(title="Barchart of Happiness and Marital Status", y="percentage", x="Level of Happiness")
+'''
+
+
+
+## 3)
