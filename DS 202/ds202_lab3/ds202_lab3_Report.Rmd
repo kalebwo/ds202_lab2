@@ -91,7 +91,8 @@ ggplot(happy, aes(age, color=happy)) + geom_freqpoly(binwidth=1) + labs(title = 
 '''{r}
 ggplot(happy, aes(marital, fill=happy)) + geom_bar(position="fill") + labs(title="Barchart of Happiness and Marital Status", y="percentage", x="Level of Happiness")
 '''
-
+ 
 
 
 ## 3)
+What did I learn from the dataset?
