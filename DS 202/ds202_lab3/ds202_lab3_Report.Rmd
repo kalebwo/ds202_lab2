@@ -60,7 +60,7 @@ polviewsVSage = fct_reorder(happy$polviews, happy$age, .fun=median, .desc = FALS
 
 ## Data Exploration
 
-## 1)
+For the data exploration, I used 4 different types of 'geoms': Histogram, Boxplot, Frequency Polygon, and Bar Chart. I used different types of geoms because they are most useful for exploring data in different ways. 
 
 Two interesting variables in this set are Sex and Degree. The distributions of both are shown below in relation to another variable, Age. 
 
@@ -69,30 +69,25 @@ library(ggplot2)
 ggplot(happy, aes(year, fill = sex)) + geom_histogram(binwidth=2) + labs(title="Histogram of Age by Sex", x="Year", y="Count")
 '''
 
-
 '''{r}
 ggplot(happy, aes(degree, age)) + geom_boxplot() + labs(title = "Boxplot of Degree by Age")
 '''
 
 
-## 2)
-
-
+This Visualization shows a fairly strong relationship between Health and Happiness. While the Percentage of reports of "Pretty Happy" Seem fairly unwavering across levels of health, There are clearly more reports of "Not Too Happy" in the "Poor" Health category and many more reports of "Very Happy" in the "Excellent" Health category.
 '''{r}
 ggplot(happy, aes(health, fill=happy)) + geom_bar(color="red", position="fill") + coord_flip() + labs(title = "Barchart of Health as it relates to Happiness", x="Health", y="Percentage")
 '''
 
-
+According to this visualization, which is a frequency polygon showing the effect of age on happiness.  Reports of "Pretty Happy" were definitely higher from the 20-50 age bracket than the 50-75 age bracket. The two ends of the spectrum "Not Too Happy" and "Very Happy" varied less than the middle category as age progressed. 
 '''{r}
 ggplot(happy, aes(age, color=happy)) + geom_freqpoly(binwidth=1) + labs(title = "Comparison of Happiness and Age", x="Age", y="Count")
 '''
 
-
+This is a barchart displaying the effect of marital status on happiness in the dataset. The most striking piece of information gathered from this comparison is the noticaeably low percentage of married people who reported "Not too Happy."
 '''{r}
 ggplot(happy, aes(marital, fill=happy)) + geom_bar(position="fill") + labs(title="Barchart of Happiness and Marital Status", y="percentage", x="Level of Happiness")
 '''
  
-
-
-## 3)
-What did I learn from the dataset?
+ I learned a lot of valuable things from this data exploration excercise. I not only strengthed and practiced my skills at data cleaning, exploration, and analysis/explanation. I also learned that, according to the dataset and my choices for visualizations, the "Happiest" Person is someone who is in Excellent Health, between the age of 25-40, and married. 
+ This conclusion seems like a reasonable one considering my own personal experience and observation of the natural world around me. Those that are in good health will be happier because mood is effected by how the body is doing physically. I have heard many places that the happiest people are married people so this also makes sense. 
