@@ -5,6 +5,18 @@ output: html_document
 
 ## Background
 
+The General Social Survey (GSS) has been run by NORC every other year since 1972 to keep track of current opinions across the United States. 
+
+
+Variable - Description :
+------------------------
+Year - year of response (1972-2016, every other year)
+Age - age of respondent
+Sex - sex of respondent (Male or Female)
+marital - Marital status of respondent (Divorced, Married, Never Married, Separated, Widowed)
+degree - highest level of education for respondent (Bachelor, Graduate, High school, Junior Collge, Lt High School)
+health - Health of the respondent (on a Poor to Excellent scale)
+partyid - the political affiliation of the respondent (on a scale from Strong Democrat to Strong Republican)
 
 
 ## The Data Cleaning Process
@@ -67,10 +79,12 @@ Two interesting variables in this set are Sex and Degree. The distributions of b
 '''{r}
 library(ggplot2)
 ggplot(happy, aes(year, fill = sex)) + geom_histogram(binwidth=2) + labs(title="Histogram of Age by Sex", x="Year", y="Count")
+
 '''
 
 '''{r}
 ggplot(happy, aes(degree, age)) + geom_boxplot() + labs(title = "Boxplot of Degree by Age")
+
 '''
 
 
